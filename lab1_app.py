@@ -204,7 +204,7 @@ def select_auto(id):
         message_body = {'message': 'Автомобиль с таким id региона найден'}
         return message_body, 200
     except Exception:
-        error_body = {'reason': 'Автомобиль с таким id региона не найден'}
+        error_body = {'reason': 'Автомобиль с таким id региона найден'}
         return error_body, 404
 
 
@@ -215,8 +215,9 @@ def auto(id):
         auto = select_auto(id)
         message_body = {"Auto": f"{auto}"}
         return message_body, 200
-    except Exception as error:
-        return str(error), 500
+    except Exception:
+        error_body = {'reason': 'Ошибка получения информации об автомобилях'}
+        return error_body, 400
 
 
 if __name__ == '__main__':
